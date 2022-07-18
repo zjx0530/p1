@@ -5,5 +5,6 @@
   利用了map来进行字典攻击，随机生成32长的字符串，计算其杂凑值并且将杂凑值的前16（或者32位）作为键，字符串作为值。每次生成了杂凑值检索一下有没有对应的键值对，如果有则碰撞成功。
 
 找到SM3 高32位的一个碰撞，以下两个字符串产生杂凑值的高32位相同。
+经过了五万多次计算后得到以下结果
 vnweagujcrxkqanmxeytygwvuefyfngs
 vgzvctqsrfglztxukavxdmnnpmhhutuo
