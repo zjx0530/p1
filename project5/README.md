@@ -40,6 +40,7 @@
        Note that the "internal octet" is 0x01 this time.
    g.  Set:
           V = HMAC_K(V)
+          
    h.  Apply the following algorithm until a proper value is found for
        k:
        1.  Set T to the empty sequence.  The length of T (in bits) is
