@@ -16,10 +16,8 @@
           
        (h1 is a sequence of hlen bits).
        
-   b.  Set:
-   
-          V = 0x01 0x01 0x01 ... 0x01
-          
+   b.Set
+          V = 0x01 0x01 0x01 ... 0x01 
        such that the length of V, in bits, is equal to 8*ceil(hlen/8).
        For instance, on an octet-based system, if H is SHA-256, then V
        is set to a sequence of 32 octets of value 1.  Note that in this
