@@ -82,7 +82,8 @@ int main() {//主函数
 
 找到SM3 高32位的一个碰撞，以下两个字符串产生杂凑值的高32位相同。
 
-共计算了58423次，比理论的2^16要少一些
+共计算了58423次，花费4个小时，比理论的2^16要少一些
+
 
 vnweagujcrxkqanmxeytygwvuefyfngs
 vgzvctqsrfglztxukavxdmnnpmhhutuo
