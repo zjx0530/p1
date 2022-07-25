@@ -71,8 +71,4 @@ project10：implement sm2 2P decrypt with real network communication
 
 project11： Google Password Checkup
 
-## 有问题的项目：
 
-### project6： merkletree
-
-问题：没有实现不存在的证明
