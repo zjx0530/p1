@@ -101,19 +101,27 @@ class MerkleTree():
 
 
 #----------------test---------------------
-    
-tree=MerkleTree()
+
+tree1=MerkleTree()
+n=10
+for i in range(0,n):#创造一个叶子结点数为10w的merkle数
+    tree1.addLeaf(str(i))
+for i in tree1.hashtree.keys():
+    print(i,":",tree1.hashtree[i])
+
+
+tree2=MerkleTree()
 n=100000
 #d(0),d(1),....d(n-1)
 for i in range(0,n):#创造一个叶子结点数为10w的merkle数
-    tree.addLeaf(str(i))
+    tree2.addLeaf(str(i))
 
-tree.mth(0,n)#为了递归的计算出根节点的hash值
+print("根节点的hash：",tree2.mth(0,n))#为了递归的计算出根节点的hash值
 
-path1=tree.auditPath(3)#获得d（3）到根节点的最短路径
+path1=tree2.auditPath(3)#获得d（3）到根节点的最短路径
 #print(path1)
 
-print(tree.Proof(3,n,tree.leafHash(3),tree.rootHash(),path1))#根据上述路径判定d（3）是否在merkle树当中
+print(tree2.Proof(3,n,tree2.leafHash(3),tree2.rootHash(),path1))#根据上述路径判定d（3）是否在merkle树当中
 
 
 
