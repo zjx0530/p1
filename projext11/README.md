@@ -14,6 +14,7 @@
 ```python
 from gmssl import sm2 
 import argon2
+from hashlib import sha256
 ```
 
 ### 函数说明：
