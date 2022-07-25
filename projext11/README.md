@@ -9,6 +9,11 @@
     
 
 ## 代码说明：
+本次实验引用了gmssl库中关于sm2相关算法
+
+```python
+from gmssl import sm2 
+```
 
 ### 函数说明：
 
