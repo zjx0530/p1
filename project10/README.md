@@ -5,6 +5,17 @@
 ![是](./ppt.png)
 
 ## 代码说明：
+本次实验引用了gmssl库中关于sm2，sm4相关算法。引用了Crypto中的求逆和KDF算法
+
+```python
+import socket
+from gmssl import sm2 ,sm4
+import sys
+import random 
+from Crypto.Util.number import *
+#inverse(3,7)
+from Crypto.Protocol.KDF import scrypt
+```
 
 ### 函数定义：
 
