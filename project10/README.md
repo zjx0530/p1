@@ -5,17 +5,6 @@
 ![是](./ppt.png)
 
 ## 代码说明：
-本次实验引用了gmssl库中关于sm2，sm4相关算法。引用了Crypto中的求逆和KDF算法
-
-```python
-import socket
-from gmssl import sm2 ,sm4
-import sys
-import random 
-from Crypto.Util.number import *
-#inverse(3,7)
-from Crypto.Protocol.KDF import scrypt
-```
 
 ### 函数定义：
 
@@ -136,14 +125,14 @@ except Exception as e:
 d1=generate_d1()
 P1=generate_P1(d1)
 s.sendall(P1.encode('utf-8'))#发送P1
-
+print("发送的P1:",P1)
 ```
 
 receiver接受P1，并生成自己的私钥来生成公钥P，并发送给sender
 
 ```python
 P1 = conn.recv(1024).decode('utf-8')#接受P1
-
+print("接受到的P1",P1)
 d2=generate_d2()
 P=generate_P(d2,P1)#产生公钥
 print("产生的公钥为：",P)
@@ -156,15 +145,16 @@ sender接受P，并生成随机数k来加密信息，获得密文C1||C2||C3
 
 ```python
 P = s.recv(1024).decode('utf-8')
+print("接收到公钥",P)
 k=generate_d1()#生成一个随机数（0，n-1）
 C1,C2,C3=Encrypt_2p(k,P,m)#此处利用加密生成了所有的密文
-
+print("加密得到密文C1||C2||C3:",C1,"||",C2,"||",C3)
 assert C1!='',"C1=0"
 
 n=int(ecctable['n'],16)
 sm2_c=sm2.CryptSM2(private_key="",public_key="")
 T1=sm2_c._kg(inverse(d1,n),C1)
-
+print("发送的T1:",T1)
 s.sendall(T1.encode('utf-8'))#发送T1
 ```
 
@@ -172,16 +162,17 @@ receiver接受T1,并且计算$ T_2=d_2^{-1}*T_1$ 发送给sender
 
 ```python
 T1=conn.recv(1024).decode('utf-8')
+print("接收到T1",T1)
 n=int(ecctable['n'],16)
 sm2_c=sm2.CryptSM2(private_key="",public_key="")
 T2=sm2_c._kg(inverse(d2,n),T1)
-
+print("发送T2:",T2)
 conn.sendall(T2.encode("utf-8"))
 ```
 
 sender接受T2，然后计算$KP=T_2-C_1$，接着计算$t=KDF(x_2||y_2,klen)$ ,接着计算出$m'=C_2 \oplus t$ ,再计算出u=hash（x2||m'||y2），检测u是否等于C3，即可确定解密是否正确，最后输出解密结果
 
-```pythoN
+```python
 T2= s.recv(1024).decode('utf-8')#接受T2
 
 C1_1=generate_G_1(C1)

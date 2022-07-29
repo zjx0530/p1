@@ -68,16 +68,20 @@ conn, addr = s.accept()
 print('Connected by', addr)
 
 P1 = conn.recv(1024).decode('utf-8')#接受P1
+print("接受到的P1",P1)
 
 d2=generate_d2()
 P=generate_P(d2,P1)#产生公钥
 print("产生的公钥为：",P)
 conn.sendall(P.encode("utf-8"))
 
+
 T1=conn.recv(1024).decode('utf-8')
+print("接收到T1",T1)
 n=int(ecctable['n'],16)
 sm2_c=sm2.CryptSM2(private_key="",public_key="")
 T2=sm2_c._kg(inverse(d2,n),T1)
+print("发送T2:",T2)
 
 conn.sendall(T2.encode("utf-8"))
 

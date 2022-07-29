@@ -93,18 +93,21 @@ except Exception as e:
 d1=generate_d1()
 P1=generate_P1(d1)
 s.sendall(P1.encode('utf-8'))#发送P1
+print("发送的P1:",P1)
 P = s.recv(1024).decode('utf-8')
+print("接收到公钥",P)
 k=generate_d1()#生成一个随机数（0，n-1）
 C1,C2,C3=Encrypt_2p(k,P,m)#此处利用加密生成了所有的密文
-
+print("加密得到密文C1||C2||C3:",C1,"||",C2,"||",C3)
 assert C1!='',"C1=0"
 
 n=int(ecctable['n'],16)
 sm2_c=sm2.CryptSM2(private_key="",public_key="")
 T1=sm2_c._kg(inverse(d1,n),C1)
-
+print("发送的T1:",T1)
 s.sendall(T1.encode('utf-8'))#发送T1
 T2= s.recv(1024).decode('utf-8')#接受T2
+print("接收到T2",T2)
 
 C1_1=generate_G_1(C1)
 
