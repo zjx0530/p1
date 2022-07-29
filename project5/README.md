@@ -130,7 +130,7 @@ def sm2_vertify(m,sign,public_key):
 m=input("请输入需要签名的信息")
 
 sign=sm2_sign(m.encode("utf-8"),public_key,private_key)#进行了签名
-
+print("签名为r||s：",sign)
 print("验证结果为：",sm2_vertify(m.encode("utf-8"),sign,public_key))#进行了验证
 ```
 

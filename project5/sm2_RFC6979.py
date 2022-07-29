@@ -43,6 +43,7 @@ def sm2_sign(m,public_key,private_key):
     msghash=hashlib.sha256(m).digest()
     pri=bytes.fromhex(private_key)#私钥的byte形式
     k=generate_k(msghash,pri)#确定性签名算法得到k
+    print("确定性签名算法产生的k：",k)
     sm2_crypt = sm2.CryptSM2(
     public_key=public_key, private_key=private_key)
     sign = sm2_crypt.sign(m, k) #  16进制
@@ -59,7 +60,7 @@ def sm2_vertify(m,sign,public_key):
 m=input("请输入需要签名的信息")
 
 sign=sm2_sign(m.encode("utf-8"),public_key,private_key)#进行了签名
-
+print("签名为r||s：",sign)
 print("验证结果为：",sm2_vertify(m.encode("utf-8"),sign,public_key))#进行了验证
 
 
