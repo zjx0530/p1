@@ -72,15 +72,17 @@ except Exception as e:
 
 d1=generate_d1()
 P1=generate_P1(d1)
+print("发送的P1",P1)
 s.sendall(P1.encode('utf-8'))#发送P1
 an = s.recv(1024)
 assert an.decode('utf-8')=="OK","fail1"
 
 Q1,e,k1=generate_Q1_e(m,Z)#产生并发送Q1,e,k1
+print("发送的Q1：",Q1)
 s.sendall(Q1.encode('utf-8'))
 an = s.recv(1024)
 assert an.decode('utf-8')=="OK","fail2"
-
+print("发送的e：",e)
 s.sendall(e)
 an = s.recv(1024)
 assert an.decode('utf-8')=="OK","fail3"
@@ -93,6 +95,8 @@ s2=int(s.recv(1024).decode("utf-8"),16)
 s.sendall("OK".encode('utf-8'))
 s3=int(s.recv(1024).decode("utf-8"),16)
 s.sendall("OK".encode('utf-8'))
+print("接收到（r,s2,s3）为：（%d,%d,%d）"%(r,s2,s3))
+
 
 r,s=generate_sign(k1,d1,r,s2,s3)#产生签名
 print("产生的签名(r,s):",r,s)

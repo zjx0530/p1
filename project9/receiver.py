@@ -82,7 +82,7 @@ conn, addr = s.accept()
 print('Connected by', addr)
 
 P1 = conn.recv(1024).decode('utf-8')#接受P1
-
+print("接受的P1",P1)
 d2=generate_d2()
 P=generate_P(d2,P1)#产生公钥
 print("产生的公钥为：",P)
@@ -90,22 +90,27 @@ conn.sendall("OK".encode("utf-8"))
 
 
 Q1=conn.recv(1024).decode('utf-8')#接受Q1
+print("接受到的Q1",Q1)
 conn.sendall("OK".encode("utf-8"))
 
 e=conn.recv(1024)#接受e
+print("接受到的e",e)
 conn.sendall("OK".encode("utf-8"))
 
 
 r,s2,s3=generate_r_s2_s3(d2,Q1,e)#产生r,s2,s3并发送给另一个人
 
+print("发送的r",r)
 conn.sendall(hex(r)[2:].encode('utf-8'))
 an=conn.recv(1024)
 assert an.decode('utf-8')=="OK","fail1"
 
+print("发送的s2",s2)
 conn.sendall(hex(s2)[2:].encode('utf-8'))
 an=conn.recv(1024)
 assert an.decode('utf-8')=="OK","fail1"
 
+print("发送的s3",s3)
 conn.sendall(hex(s3)[2:].encode('utf-8'))
 an=conn.recv(1024)
 assert an.decode('utf-8')=="OK","fail1"
