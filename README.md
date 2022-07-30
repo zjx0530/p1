@@ -46,7 +46,7 @@
 | 15  | send a tx on Bitcoin testnet, and parse the tx data down to every bit, better write script yourself |
 | 16  | forge a signature to pretend that you are Satoshi                                                   |
 | 17  | research report on MPT                                                                              |
-| 18  | optimize SM4                                                                                        |
+| **  | optimize SM4 (在课上有所提及)                                                                        |
 
 ## 没有完成的项目
 
