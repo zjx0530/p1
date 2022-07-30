@@ -24,7 +24,7 @@
 | project14 | send a tx onBitcoin testnet, and parse the tx data down to every bit, better write script yourself |
 | project15 | research report on MPT                                                                             |
 | projext16 | optimize SM4                                                                                       |
-
+| projext17 | Find a key with hash value “sdu_cst_20220610” under a message composed of your name followed by your student ID. For example, “San Zhan 202000460001”.                                                                                      |
 # 清单
 
 ## 完成的项目：
@@ -46,6 +46,7 @@
 | 15  | send a tx on Bitcoin testnet, and parse the tx data down to every bit, better write script yourself |
 | 16  | forge a signature to pretend that you are Satoshi                                                   |
 | 17  | research report on MPT                                                                              |
+| 18  | Find a key with hash value “sdu_cst_20220610” under a message composed of your name followed by your student ID. For example, “San Zhan 202000460001”. |
 | **  | optimize SM4 (在课上有所提及)                                                                        |
 
 ## 没有完成的项目
@@ -54,6 +55,5 @@
 |:---:|:------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | 4   | do your best to optimize SM3 implementation (software)                                                                                                 |
 | 6   | Try to Implement this scheme(below)                                                                                                                    |
-| 18  | Find a key with hash value “sdu_cst_20220610” under a message composed of your name followed by your student ID. For example, “San Zhan 202000460001”. |
 | 19  | Find a 64-byte message under some k fulfilling that their hash value is symmetrical                                                                    |
 | 20  | write  a circuit...                                                                                                                                    |
